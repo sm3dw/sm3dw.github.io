@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <title>THE FINAL ASSIGNMENT</title>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js"></script>
+    </head>
+    <body>
+        <h1>Dynamic Guide Proof of Concept</h1>
+        <p>Parts of the guide will be hidden based on what you've already picked up or what you can't obtain yet! (To save time, all of the actual writing is taken from <a href="https://www.zeldadungeon.net/wiki/A_Link_to_the_Past_Heart_Pieces">Zelda Dungeon</a>.)</p>
+        <input type="button" value="Save" onclick="saveCollection()">
+        <input type="button" value="Load" onclick="loadCollection()">
+        <h2>Items</h2>
+        <input type="checkbox" id="bombs" name="bombs" onclick="changeItem('bombs')">
+        <label for="bombs">Bombs</label>
+        <br>
+        <input type="checkbox" id="pboots" name="pboots" onclick="changeItem('pboots')">
+        <label for="pboots">Pegasus Boots</label>
+        <br>
+        <input type="checkbox" id="mudora" name="mudora" onclick="changeItem('mudora')">
+        <label for="mudora">Book of Mudora</label>
+        <br>
+        <input type="checkbox" id="flippers" name="flippers" onclick="changeItem('flippers')">
+        <label for="flippers">Zora's Flippers</label>
+        <br>
+        <input type="checkbox" id="glove1" name="glove1" onclick="changeItem('glove1')">
+        <label for="glove1">Power Glove</label>
+        <br>
+        <input type="checkbox" id="mirror" name="mirror" onclick="changeItem('mirror')">
+        <label for="mirror">Magic Mirror</label>
+        <br>
+        <input type="checkbox" id="sword2" name="sword2" onclick="changeItem('sword2')">
+        <label for="sword2">Master Sword</label>
+        <br>
+        <input type="checkbox" id="hookshot" name="hookshot" onclick="changeItem('hookshot')">
+        <label for="hookshot">Hookshot</label>
+        <br>
+        <input type="checkbox" id="cape" name="cape" onclick="changeItem('cape')">
+        <label for="cape">Magic Cape</label>
+        <br>
+        <input type="checkbox" id="glove2" name="glove2" onclick="changeItem('glove2')">
+        <label for="glove2">Titan's Mitt</label>
+        <br>
+        <input type="checkbox" id="hammer" name="hammer" onclick="changeItem('hammer')">
+        <label for="hammer">Magic Hammer</label>
+        <br>
+        <input type="checkbox" id="flute" name="flute" onclick="changeItem('flute')">
+        <label for="flute">Flute</label>
+        <br>
+        <input type="checkbox" id="somaria" name="somaria" onclick="changeItem('somaria')">
+        <label for="somaria">Cane of Somaria</label>
+        <br>
+        <input type="checkbox" id="qmedal" name="qmedal" onclick="changeItem('qmedal')">
+        <label for="qmedal">Quake Medallion</label>
+        <h2>Pieces of Heart</h2>
+        <input type="checkbox" id="hp1Box" name="hp1" onclick="changeHP('hp1')">
+        <label for="hp1Box">Lost Woods Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp2Box" name="hp2" onclick="changeHP('hp2')">
+        <label for="hp2Box">Kakariko Heart Piece #1</label>
+        <br>
+        <input type="checkbox" id="hp3Box" name="hp3" onclick="changeHP('hp3')">
+        <label for="hp3Box">Kakariko Heart Piece #2</label>
+        <br>
+        <input type="checkbox" id="hp4Box" name="hp4" onclick="changeHP('hp4')">
+        <label for="hp4Box">15-Second Game Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp5Box" name="hp5" onclick="changeHP('hp5')">
+        <label for="hp5Box">Great Swamp Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp6Box" name="hp6" onclick="changeHP('hp6')">
+        <label for="hp6Box">Desert of Mystery Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp7Box" name="hp7" onclick="changeHP('hp7')">
+        <label for="hp7Box">Heart Piece next to the Sanctuary</label>
+        <br>
+        <input type="checkbox" id="hp8Box" name="hp8" onclick="changeHP('hp8')">
+        <label for="hp8Box">Desert Palace Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp9Box" name="hp9" onclick="changeHP('hp9')">
+        <label for="hp9Box">Zora's Waterfall Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp10Box" name="hp10" onclick="changeHP('hp10')">
+        <label for="hp10Box">Death Mountain Caverns Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp11Box" name="hp11" onclick="changeHP('hp11')">
+        <label for="hp11Box">Death Mountain Spectacle Rock Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp12Box" name="hp12" onclick="changeHP('hp12')">
+        <label for="hp12Box">Lumberjack House Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp13Box" name="hp13" onclick="changeHP('hp13')">
+        <label for="hp13Box">Pyramid Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp14Box" name="hp14" onclick="changeHP('hp14')">
+        <label for="hp14Box">Haunted Grove Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp15Box" name="hp15" onclick="changeHP('hp15')">
+        <label for="hp15Box">Lake Hylia Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp16Box" name="hp16" onclick="changeHP('hp16')">
+        <label for="hp16Box">Graveyard Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp17Box" name="hp17" onclick="changeHP('hp17')">
+        <label for="hp17Box">Game of Chance Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp18Box" name="hp18" onclick="changeHP('hp18')">
+        <label for="hp18Box">Digging Game Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp19Box" name="hp19" onclick="changeHP('hp19')">
+        <label for="hp19Box">Dark Death Mountain Cliff Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp20Box" name="hp20" onclick="changeHP('hp20')">
+        <label for="hp20Box">Stake Garden Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp21Box" name="hp21" onclick="changeHP('hp21')">
+        <label for="hp21Box">Misery Mire Cliff Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp22Box" name="hp22" onclick="changeHP('hp22')">
+        <label for="hp22Box">Desert Cliff Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp23Box" name="hp23" onclick="changeHP('hp23')">
+        <label for="hp23Box">Death Mountain Island Heart Piece</label>
+        <br>
+        <input type="checkbox" id="hp24Box" name="hp24" onclick="changeHP('hp24')">
+        <label for="hp24Box">Turtle Rock Heart Piece</label>
+        <h1>Heart Piece Locations</h1>
+        <div id="hp1" class="guide">
+            <h2>Lost Woods Heart Piece</h2>
+            <p>Enter the Lost Woods through the entrance north of the Fortune Teller's Hut and proceed northwards until you see the Den of Thieves, a cave in a tree stump. Cut the patch of 3x3 grass directly northeast of the hideout and fall down the hole in the center to grab the first Piece of Heart.</p>
+        </div>
+        <div id="hp2" class="guide">
+            <h2>Kakariko Heart Piece #1</h2>
+            <p>Go northwest of the Street Merchant, and you should see a well next to a cave. Head up on top of the ledge above them and jump off into the well. Place a Bomb on the cracked wall next to the Treasure Chests and go through the wall to open the chest, gaining the second Piece of Heart.</p>
+        </div>
+        <div id="hp3" class="guide">
+            <h2>Kakariko Heart Piece #2</h2>
+            <p>Go to northern Kakariko Village and you should see Blind's Hideout, a gray building with a grassy roof, next to Sahasrahla's Cottage. Head inside his hideout, go down the stairs, and bomb the cracked wall directly to the right. Head through this new door and make sure to open the chest to obtain the third Piece of Heart.</p>
+        </div>
+        <div id="hp4" class="guide">
+            <h2>15-Second Game Heart Piece</h2>
+            <p>To the south of Kakariko Village you can find the House of Quarreling Brothers, the red-roofed house that extends past the screen. Enter their house and use a bomb on the cracked wall to open the western side of the house. Now exit the house from the left room and talk to the lady, one of two 15-Second Game Operators, and she will tell you to complete the race in under fifteen seconds.<br> To do this, head up and take your first left, then when you get to a fork, take another left. When you reach the sign, go down and you will use a secret jump. After the jump, talk to the male operator to earn the fourth Piece of Heart if you completed the race in 15 seconds or less.</p>
+        </div>
+        <div id="hp5" class="guide">
+            <h2>Great Swamp Heart Piece</h2>
+            <p>In the southwest of the Great Swamp, you can find the Swamp Ruins. In the ruins, push the middle block up and then push the right or left block out. After going through the north door, pull the switch on the right. When you exit the ruins now, the water level has fallen and to the west should be the fifth Piece of Heart.</p>
+        </div>
+        <div id="hp6" class="guide">
+            <h2>Desert of Mystery Heart Piece</h2>
+            <p>Enter the cave in the northeast corner of the Desert of Mystery and head up the stairs into the next portion of the cave where Aginah can be found. Here, you will see a crack on the bottom wall. Place a Bomb on the wall to reveal a small chamber. Open the treasure chest and get the sixth Piece of Heart.</p>
+        </div>
+        <div id="hp7" class="guide">
+            <h2>Heart Piece next to the Sanctuary</h2>
+            <p>From the Sanctuary, go left one screen, go up onto the cliff, and head right once. You should now be on the Sanctuary screen, but on top of a cliff. Now, use the Pegasus Boots to run into the pile of rocks to reveal a staircase. Head down the stairs and open the chest to obtain the seventh Piece of Heart.</p>
+        </div>
+        <div id="hp8" class="guide">
+            <h2>Desert Palace Heart Piece</h2>
+            <p>Using the Book of Mudora to enter the Desert Palace, go up and take the left pathway where you'll see a Beamos. Then, you should head up, left, and down a screen. Next, go through the door on the very bottom of the room, then go outside through the southern door. Since you have gone through the western exit, while making sure to stay on the cliff, keep on going south and obtain the eighth Piece of Heart.</p>
+        </div>
+        <div id="hp9" class="guide">
+            <h2>Zora's Waterfall Heart Piece</h2>
+            <p>After purchasing the Zora's Flippers from King Zora, travel south from the Zora and swim over the first waterfall. Before the second waterfall, turn west and follow the path of shallow water until you reach a grassy cliff. Then, keep continuing west until you reach the ninth Piece of Heart.</p>
+        </div>
+        <div id="hp10" class="guide">
+            <h2>Death Mountain Caverns Heart Piece</h2>
+            <p>Next to the path back to Kakariko Village on Death Mountain is a large ladder. Climb up the ladder, and once you are at the top, go right until you see Spectacle Rock. Below Spectacle Rock, jump off the ledge down to the cave on the right and enter it. Head upstairs and follow the path until you come across the Piece of Heart.</p>
+        </div>
+        <div id="hp11" class="guide">
+            <h2>Death Mountain Spectacle Rock Heart Piece</h2>
+            <p>On Death Mountain, enter the first Magical Warp Tile that is south of the Tower of Hera. In the Dark World, travel left until you come across the first brown, diamond-like patch and use the Magic Mirror. You should appear on Spectacle Rock where the Piece of Heart is.</p>
+        </div>
+        <div id="hp12" class="guide">
+            <h2>Lumberjack House Heart Piece</h2>
+            <p>After defeating Agahnim for the first time, you should see a tree that is lighter green than the rest near the House of Lumberjacks. Use the Pegasus Boots to dash into the tree which will uncover a cave entrance in the stump. Enter the stump and go through the door on the right side of the wall after climbing up the stairs to claim the twelfth Piece of Heart.</p>
+        </div>
+        <div id="hp13" class="guide">
+            <h2>Pyramid Heart Piece</h2>
+            <p>When atop the Pyramid of Power in the Dark World, climb down the first set of stairs and then down the stairs on the right. Continue a little to the right and drop off the small ledge down to the next level. Go right and up to find the Piece of Heart.</p>
+        </div>
+        <div id="hp14" class="guide">
+            <h2>Haunted Grove Heart Piece</h2>
+            <p>In the Dark World, there is a small circle of flowers to the south of the Haunted Grove. Stand near or in the center of these flowers and use the Magic Mirror to warp to the Light World. Enter the cave on the plateau and grab the fourteen Piece of Heart.</p>
+        </div>
+        <div id="hp15" class="guide">
+            <h2>Lake Hylia Heart Piece</h2>
+            <p>In the northwestern corner of the Ice Lake of the Dark World, you will find a large circle of stones surrounding a large patch of shallow water. Stand in the shallow water and use the Magic Mirror to warp to Lake Hylia. You will appear on an island with the fifteen Piece of Heart.</p>
+        </div>
+        <div id="hp16" class="guide">
+            <h2>Graveyard Heart Piece</h2>
+            <p>In the Ghostly Garden in the Dark World, travel to the north side of the garden by either using the Pegasus Boots to break the piled rocks in the area or using the Titan's Mitt to lift the skulls in the northeastern corner of the Ghostly Garden. When you arrive at the north side of the area, you should see a short ladder. Climb up and use the Magic Mirror to warp to the Graveyard. Enter the cave and bomb the northern wall to find the Piece of Heart.</p>
+        </div>
+        <div id="hp17" class="guide">
+            <h2>Game of Chance Heart Piece</h2>
+            <p>In the Village of Outcasts, enter the building with a symbol of a treasure chest on the roof on the west side of the village, being the Game of Chance. Pay the operator 30 Rupees to play the game, only allowing you to open two treasure chests. One of the treasure chests contains a Piece of Heart. You may need to play multiple times and it can be quite costly.</p>
+        </div>
+        <div id="hp18" class="guide">
+            <h2>Digging Game Heart Piece</h2>
+            <p>In the same area where the 15-Second Game is located in the Light World, the Treasure Field is found to the south of the Village of Outcasts. Pay the operator 80 Rupees to play the Digging Game where you get to dig up as many treasures as you want in thirty seconds. Once he lends you his shovel for the mini-game, start digging right away. Similarly to the Game of Chance, this Piece of Heart is completely random, so you may need to play multiple times to dig up the Heart Piece.</p>
+        </div>
+        <div id="hp19" class="guide">
+            <h2>Dark Death Mountain Cliff Heart Piece</h2>
+            <p>In the Dark World, travel south of the Item Shop east of the Skeleton Forest to the base of Death Mountain. Nearby, while you can see the Piece of Heart on the ledge, you cannot access it.<br>Enter the cave and follow the path, while defeating the Hardhat Beetles and avoiding the Bumper, and climb up the stairs to the second floor. You will see a hole that you cannot travel across without the Hookshot. Use the Hookshot to grapple onto one of the skulls and cross the hole. Now head south until you are stopped by a Bumper blocking the way forward. You should use the Magic Cape to turn invisible and walk through it. Keep going south until you come across the end of the cave. Exit the cave to get the nineteenth Piece of Heart.</p>
+        </div>
+        <div id="hp20" class="guide">
+            <h2>Stake Garden Heart Piece</h2>
+            <p>To the east of the Village of Outcasts you can find the Stake Garden. While it is blocked by the dark stones, you can use the Titan's Mitt to lift them up. Afterwards, there are 22 purple stakes in the garden that need to be pounded with the Magic Hammer, the order in which is done so does not matter. Once they are all pounded, the stump below the stakes will disappear and reveal an entrance to a cave. Once you have gone into the cave, you will find a Piece of Heart.</p>
+        </div>
+        <div id="hp21" class="guide">
+            <h2>Misery Mire Cliff Heart Piece</h2>
+            <p>Use the Flute to warp to Location 6, the Desert of Mystery, and then lift the heavy rock with the Titan's Mitt on your right to reveal a Magical Warp Tile. Warp to the Swamp of Evil through the tile and jump of the ledge, making your way north until you see a similar structure to the entrance to Misery Mire. This building is west of the dungeon.<br>Once inside, avoid the Sparks and go down the stairs, making your way to the block puzzle at the end of the room. In order to get the Piece of Heart, you need to push the block in the bottom left corner to the left and then push the one to the right of the first block to the right. Push the one on the lower left hand side upwards and push the block blocking the chest to the left. There are two treasure chests, open the one on the left to obtain the Piece of Heart.</p>
+        </div>
+        <div id="hp22" class="guide">
+            <h2>Desert Cliff Heart Piece</h2>
+            <p>Using the Flute, warp to Location 6, the Desert of Mystery, and lift the rock to your right to reveal the Magical Warp Tile. Warping to the Swamp of Evil, travel to the far northeast corner of the swamp and enter the little cul-de-sac. Here, use the Magic Mirror to warp back to the Desert of Mystery and lift the boulder to reveal a cave entrance. Head down the stairs and complete the puzzle. If needed, refer to the image. Once you have completed the puzzle, you can obtain the twenty-second Piece of Heart.</p>
+        </div>
+        <div id="hp23" class="guide">
+            <h2>Death Mountain Island Heart Piece</h2>
+            <p>From Turtle Rock in the Dark World, travel west and then south until you reach the first large rock. When you lift it, it reveals a cave entrance. Enter the cave and go north until you come to a gap between the rest of the path. Like in other places, there is an invisible bridge. While you do not need to use the Ether Medallion in order to cross the gap, it will make for an easier time getting across. Make your way across the bridge and bomb the wall.<br>Once through, you will come to a room with three cracked walls. To get the Piece of Heart, bomb the western wall and go to the next room. Finally, exit the cave by going through the door at the bottom. Use the Magic Mirror to warp to the Light World to find the Piece of Heart.</p>
+        </div>
+        <div id="hp24" class="guide">
+            <h2>Turtle Rock Heart Piece</h2>
+            <p>In Turtle Rock, there are two rooms where Link can choose which pipe to take. In the lava-filled room, take the left pipe and go through the door it takes him to. In this room, defeat the two Hokkubokku and continue through the door to the south. Travel west and you should see a door to the south that leads outside. Dodge the Laser Eyes and exit through it.<br>Once outside, you should be on a ledge. Go to the far right side of the ledge, but do not go back inside the dungeon. Instead, use the Magic Mirror to warp back to the Light World and then go inside the cave. In order to go to the next room, defeat the four green Goriyas. Once you have, proceed to the next room where you will find a treasure chest containing the final Piece of Heart.</p>
+        </div>
+        <script src="final/script.js"></script>
+    </body>
+</html>
